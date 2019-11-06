@@ -14,4 +14,10 @@ public class Controller {
     public String test(HttpServletRequest request, Model model){
         return "hello";
     }
+
+    @GetMapping("/test")
+    public String test2(HttpServletRequest request, Model model){
+        return "test";
+    }
+
 }
