@@ -11,10 +11,12 @@ h1, .h1 {
 
 /* CUSTOM CLASSES */
 /* colors */
+.c-white {
+	color: #ffffff;
+}
 .c-invalid {
 	color: #C30000;
 }
-
 .bgc-highlight-soft {
 	background-color: #52C293;
 }
@@ -31,4 +33,7 @@ h1, .h1 {
 }
 .mh-auto {
 	min-height: auto;
+}
+.mh-fit {
+	min-height: fit-content;
 }
