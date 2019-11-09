@@ -26,3 +26,9 @@ h1, .h1 {
 .h-35 {
 	height: 35%;
 }
+.flex-grow-0 {
+	flex-grow: 0;
+}
+.mh-auto {
+	min-height: auto;
+}
