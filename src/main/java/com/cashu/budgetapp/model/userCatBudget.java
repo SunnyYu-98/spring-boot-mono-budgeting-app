@@ -11,7 +11,7 @@ public class userCatBudget {
     @Column(name = "budget_percentage")
     private int budgetPercentage;
 
-    // FK  expense cat ID and userid
+    // FK  expense cat ID and userid.
 
 
 
