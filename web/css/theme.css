@@ -1,0 +1,39 @@
+/* OVERWRITES */
+html, body {
+	max-height: 100%;
+	height: 100%;
+	min-height: 100%;
+}
+
+h1, .h1 {
+	font-size: 4.5rem;
+}
+
+/* CUSTOM CLASSES */
+/* colors */
+.c-white {
+	color: #ffffff;
+}
+.c-invalid {
+	color: #C30000;
+}
+.bgc-highlight-soft {
+	background-color: #52C293;
+}
+
+/* util */
+.h-30 {
+	height: 30%;
+}
+.h-35 {
+	height: 35%;
+}
+.flex-grow-0 {
+	flex-grow: 0;
+}
+.mh-auto {
+	min-height: auto;
+}
+.mh-fit {
+	min-height: fit-content;
+}
