@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_notification_setting")
-public class userNotifSetting {
+public class UserNotifSetting {
 
     // notification type
     @Column(name = "notification_type")

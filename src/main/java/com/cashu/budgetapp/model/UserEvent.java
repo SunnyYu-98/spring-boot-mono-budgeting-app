@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "user_event")
-public class userEvent {
+public class UserEvent {
 
     // Event ID
     @Id

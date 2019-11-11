@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "expense_category")
-public class expenseCategory {
+public class ExpenseCategory {
 
     // Expense Category ID
     @Id

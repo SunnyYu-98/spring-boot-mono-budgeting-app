@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_category_budget")
 
-public class userCatBudget {
+public class UserCategoryBudget {
 
     // Budget Percentage
     @Column(name = "budget_percentage")
