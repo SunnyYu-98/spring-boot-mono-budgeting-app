@@ -2,34 +2,32 @@ package com.cashu.budgetapp.model;
 
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "expenses")
 public class Expenses {
 
-    // Expenses ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "expense_id")
-    private Long expId;
+    private Long expenseId;
 
-    // Expense amount
     @Column (name = "amount")
     private double amount;
 
-    // Expense name
     @Column (name = "name")
-    private String expname;
+    private String expenseName;
 
-    // Expense date
     @Column(name = "expense_date")
-    private java.sql.Date expDate;
+    private Date expDate;
 
-    // Foreign keys are Expense Category ID and user ID
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    private Long userId;
 
-    // Not sure what im doing
-
-
-
+    @ManyToOne(targetEntity = ExpenseCategory.class)
+    @JoinColumn(name = "expense_cat_id")
+    private Long categoryId;
 
 }
