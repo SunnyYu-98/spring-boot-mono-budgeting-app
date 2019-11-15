@@ -8,7 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", updatable = false, nullable = false)
+    @Column(name = "user_id")
     private Long userId;
 
     //java.sql.Date instead of java.util.Date
@@ -53,7 +53,5 @@ public class User {
         this.password = password;
     }
 
-
-
-
+    
 }
