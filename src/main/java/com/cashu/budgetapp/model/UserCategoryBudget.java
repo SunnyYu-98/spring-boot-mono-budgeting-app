@@ -1,18 +1,15 @@
 package com.cashu.budgetapp.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user_category_budget")
+public class UserCategoryBudget implements Serializable {
 
-public class UserCategoryBudget {
+    @EmbeddedId
+    private UserCategoryBudgetId userCategoryBudgetId;
 
-    // Budget Percentage
     @Column(name = "budget_percentage")
     private int budgetPercentage;
-
-    // FK  expense cat ID and userid.
-
-
-
 }
