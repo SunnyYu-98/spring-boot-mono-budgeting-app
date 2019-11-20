@@ -51,11 +51,14 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = Expenses.class)
     private List<Expenses> allExpenses = new ArrayList<>();
 
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "userCategoryBudgetId", targetEntity = UserCategoryBudgetId.class)
-    //private List<UserCategoryBudget> allUserBudgets = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserNotificationSetting.class)
+    private List<UserNotificationSetting> allNotificationSettings = new ArrayList<>();
 
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "userRoleId", targetEntity = UserRoleId.class)
-    //private List<UserRole> userRole = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserCategoryBudget.class)
+    private List<UserCategoryBudget> allUserBudgets = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserRole.class)
+    private List<UserRole> userRole = new ArrayList<>();
 
     public String getPassword(){
         return password;

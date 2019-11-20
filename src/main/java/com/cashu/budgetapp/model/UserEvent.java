@@ -14,4 +14,20 @@ public class UserEvent implements Serializable {
 
     @Column(name = "event_name")
     private String eventName;
+
+    public Long getEventID() {
+        return eventID;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventID(Long eventID) {
+        this.eventID = eventID;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
 }

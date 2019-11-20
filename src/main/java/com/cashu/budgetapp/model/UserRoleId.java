@@ -15,4 +15,8 @@ public class UserRoleId implements Serializable {
     @Column(name = "role_id")
     private int roleId;
 
+    public int getRoleId(){
+        return roleId;
+    }
+
 }

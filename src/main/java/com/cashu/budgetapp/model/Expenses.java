@@ -29,4 +29,52 @@ public class Expenses implements Serializable {
     @ManyToOne(targetEntity = ExpenseCategory.class)
     @JoinColumn(name = "expense_cat_id")
     private ExpenseCategory category;
+
+    public void setExpenseId(Long expenseId) {
+        this.expenseId = expenseId;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setExpenseName(String expenseName) {
+        this.expenseName = expenseName;
+    }
+
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCategory(ExpenseCategory category) {
+        this.category = category;
+    }
+
+    public Long getExpenseId() {
+        return expenseId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getExpenseName() {
+        return expenseName;
+    }
+
+    public Date getExpDate() {
+        return expDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ExpenseCategory getCategory() {
+        return category;
+    }
 }
