@@ -1,12 +1,12 @@
 package com.cashu.budgetapp.model;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name = "expenses")
-public class Expenses {
+public class Expenses implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,57 @@ public class Expenses {
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
-    private Long userId;
+    private User user;
 
     @ManyToOne(targetEntity = ExpenseCategory.class)
     @JoinColumn(name = "expense_cat_id")
-    private Long categoryId;
+    private ExpenseCategory category;
 
+    public void setExpenseId(Long expenseId) {
+        this.expenseId = expenseId;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setExpenseName(String expenseName) {
+        this.expenseName = expenseName;
+    }
+
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCategory(ExpenseCategory category) {
+        this.category = category;
+    }
+
+    public Long getExpenseId() {
+        return expenseId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getExpenseName() {
+        return expenseName;
+    }
+
+    public Date getExpDate() {
+        return expDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ExpenseCategory getCategory() {
+        return category;
+    }
 }
