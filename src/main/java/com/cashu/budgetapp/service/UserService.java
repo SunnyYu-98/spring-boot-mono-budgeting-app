@@ -4,6 +4,7 @@ import com.cashu.budgetapp.dao.UserDao;
 import com.cashu.budgetapp.model.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -20,8 +21,9 @@ public class UserService {
         return userDao.findUserByEmail(email);
     }
 
+    @Transactional
     public void saveUser(User user){
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userDao.saveUser(user);
     }
 
 }
