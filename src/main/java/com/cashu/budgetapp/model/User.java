@@ -49,16 +49,16 @@ public class User implements Serializable {
     @Column(name = "is_enabled")
     private boolean isEnabled;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = Expenses.class)
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "user", targetEntity = Expenses.class)
     private List<Expenses> allExpenses = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserNotificationSetting.class)
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserNotificationSetting.class)
     private List<UserNotificationSetting> allNotificationSettings = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserCategoryBudget.class)
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserCategoryBudget.class)
     private List<UserCategoryBudget> allUserBudgets = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserRole.class)
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "user", targetEntity = UserRole.class)
     private List<UserRole> userRole = new ArrayList<>();
 
     public Long getUserId() {

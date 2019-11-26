@@ -22,4 +22,36 @@ public class UserNotificationSetting implements Serializable {
 
     @Column(name = "notification_type")
     private String notificationType;
+
+    public Long getNotificationSettingId() {
+        return notificationSettingId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public UserEvent getEvent() {
+        return event;
+    }
+
+    public String getNotificationType() {
+        return notificationType;
+    }
+
+    public void setNotificationSettingId(Long notificationSettingId) {
+        this.notificationSettingId = notificationSettingId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setEvent(UserEvent event) {
+        this.event = event;
+    }
+
+    public void setNotificationType(String notificationType) {
+        this.notificationType = notificationType;
+    }
 }

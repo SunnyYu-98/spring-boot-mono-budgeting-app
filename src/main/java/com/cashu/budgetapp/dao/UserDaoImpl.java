@@ -3,6 +3,7 @@ package com.cashu.budgetapp.dao;
 
 import com.cashu.budgetapp.model.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -17,9 +18,15 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+    //@Transactional
     @Override
     public User findUserByEmail(String email) {
-        return null;
+        Query query = entityManager.createNativeQuery("SELECT * FROM user WHERE email=?1",User.class);
+        query.setParameter(1, email);
+
+        List<User> users = query.getResultList();
+
+        return users.isEmpty() ? null : users.get(0);
     }
 
     public List<User> getAll() {
@@ -29,9 +36,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public void saveUser(User user) {
-        executeInsideTransaction(entityManager -> entityManager.persist(user));
+       //executeInsideTransaction(entityManager -> entityManager.persist(user));
+        entityManager.persist(user);
+
     }
+
 
     private void executeInsideTransaction(Consumer<EntityManager> action) {
         EntityTransaction tx = entityManager.getTransaction();
@@ -45,4 +56,6 @@ public class UserDaoImpl implements UserDao {
             throw e;
         }
     }
+
+
 }

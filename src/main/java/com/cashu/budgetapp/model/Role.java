@@ -18,4 +18,21 @@ public class Role implements Serializable {
 
     //@OneToMany(fetch = FetchType.LAZY, mappedBy = "userRoleId", targetEntity = UserRoleId.class)
     //private List<UserRole> userRole = new ArrayList<>();
+
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

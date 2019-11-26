@@ -1,7 +1,7 @@
 package com.cashu.budgetapp.security;
 
-import com.cashu.budgetapp.model.User;
-import com.cashu.budgetapp.service.UserService;
+import com.cashu.budgetapp.service.UserServiceImpl;
+
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Resource(name = "userService")
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
@@ -26,25 +26,13 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         //setDefaultFailureUrl(DEFAULT_FAILURE_URL);
         super.onAuthenticationFailure(request, response, exception);
 
+        System.out.println("In customer failure handler");
+
+        System.out.println("request.getParameter(\"username\") = " + request.getParameter("username"));
         //need to pass the email
         if (exception instanceof BadCredentialsException) {
-            lockUser(request.getParameter("username"));
+            userService.lockUser(request.getParameter("username"));
         }
 
     }
-
-    private void lockUser(String username) {
-        //username = email
-        User user = userService.getUserByEmail(username);
-
-        if (user != null) {
-            int failedCount = user.getNumberOfFailedLogins() + 1;
-            user.setNumberOfFailedLogins(failedCount);
-
-            if (failedCount > 5) {
-                user.setLocked(true);
-            }
-
-            userService.saveUser(user);
-        }
-    }}
+}

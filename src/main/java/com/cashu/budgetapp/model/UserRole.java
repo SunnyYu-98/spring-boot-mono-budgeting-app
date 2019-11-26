@@ -12,16 +12,6 @@ public class UserRole implements Serializable {
     @Column(name = "user_role_id")
     private int userRoleId;
 
-    /*
-    @EmbeddedId
-    private UserRoleId userRoleId;
-
-    public int getRoleId(){
-        return userRoleId.getRoleId();
-    }
-
-     */
-
     @OneToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
@@ -30,4 +20,27 @@ public class UserRole implements Serializable {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public int getUserRoleId() {
+        return userRoleId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setUserRoleId(int userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
