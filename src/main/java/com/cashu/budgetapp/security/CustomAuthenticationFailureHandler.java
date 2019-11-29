@@ -2,6 +2,9 @@ package com.cashu.budgetapp.security;
 
 import com.cashu.budgetapp.service.UserServiceImpl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -19,20 +22,22 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     @Resource(name = "userService")
     private UserServiceImpl userService;
 
+    private Logger logger = LoggerFactory.getLogger(CustomAuthenticationFailureHandler.class);
+
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
+        setDefaultFailureUrl("/login?error");
 
-        //setDefaultFailureUrl(DEFAULT_FAILURE_URL);
-        super.onAuthenticationFailure(request, response, exception);
-
-        System.out.println("In customer failure handler");
-
-        System.out.println("request.getParameter(\"username\") = " + request.getParameter("username"));
-        //need to pass the email
+        //username = email
         if (exception instanceof BadCredentialsException) {
             userService.lockUser(request.getParameter("username"));
+            logger.info("userService.lockUser ran for " + request.getParameter("username"));
         }
 
+        logger.warn("Exception thrown in AuthenticationFailureHandler, error: \"" + exception.getLocalizedMessage() + "\"");
+        super.onAuthenticationFailure(request, response, exception);
     }
 }

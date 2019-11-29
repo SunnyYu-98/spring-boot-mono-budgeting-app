@@ -3,10 +3,16 @@ package com.cashu.budgetapp.controller;
 import com.cashu.budgetapp.dao.UserDao;
 import com.cashu.budgetapp.model.User;
 import com.cashu.budgetapp.service.UserServiceImpl;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -87,5 +93,4 @@ public class TestController {
 
         return "home";
     }
-
 }

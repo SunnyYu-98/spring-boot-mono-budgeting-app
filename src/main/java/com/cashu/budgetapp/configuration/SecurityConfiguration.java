@@ -11,13 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.annotation.Resource;
-import javax.security.auth.login.AccountLockedException;
 import javax.sql.DataSource;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +41,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(userService)
                 .and()
                 .jdbcAuthentication()
@@ -53,16 +48,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
-
-        //throw new AccountLockedException();
     }
 
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        //http.authenticationProvider();
         http
                 .authorizeRequests()
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -73,67 +66,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-
-        //http.authorizeRequests().antMatchers("/**/favicon.ico") .permitAll()
-        //        .and().authorizeRequests().antMatchers("/static/css").permitAll()
-        //        .and().authorizeRequests().antMatchers("/js").permitAll()
-        //        .and().formLogin().loginPage("/login").permitAll();
-
-
-
-        /*
-        http
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests
-                                .anyRequest().authenticated()
-                )
-                .formLogin()
-                .successHandler(customAuthenticationSuccessHandler)
-                .failureHandler(customAuthenticationFailureHandler)
-                .usernameParameter("email")
-                .passwordParameter("password")
-                ;
-        */
-        //super.configure(http);
-        /*
-        http.formLogin()
-                .successHandler(customAuthenticationSuccessHandler)
-                .failureHandler(customAuthenticationFailureHandler);
-
-         */
-
-        /*
-        http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .and()
-                .csrf().disable()
-                .formLogin()
-                .successHandler(customAuthenticationSuccessHandler)
-                .failureHandler(customAuthenticationFailureHandler)
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/");
-         */
-
-
-        /*
-        http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .and()
-                .csrf().disable()
-                .formLogin()
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/");
-         */
     }
-
-
-
 }
