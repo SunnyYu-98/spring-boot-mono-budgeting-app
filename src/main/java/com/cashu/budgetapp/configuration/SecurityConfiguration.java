@@ -2,7 +2,7 @@ package com.cashu.budgetapp.configuration;
 
 import com.cashu.budgetapp.security.CustomAuthenticationFailureHandler;
 import com.cashu.budgetapp.security.CustomAuthenticationSuccessHandler;
-import com.cashu.budgetapp.service.UserServiceImpl;
+import com.cashu.budgetapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Resource(name = "userService")
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

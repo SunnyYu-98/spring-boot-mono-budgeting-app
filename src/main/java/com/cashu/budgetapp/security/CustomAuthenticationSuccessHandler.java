@@ -1,7 +1,7 @@
 package com.cashu.budgetapp.security;
 
 import com.cashu.budgetapp.model.User;
-import com.cashu.budgetapp.service.UserServiceImpl;
+import com.cashu.budgetapp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Resource(name = "userService")
-    private UserServiceImpl userServiceImpl;
+    private UserService userServiceImpl;
 
     private Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
 

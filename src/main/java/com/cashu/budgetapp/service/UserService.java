@@ -1,7 +1,6 @@
 package com.cashu.budgetapp.service;
 
 import com.cashu.budgetapp.dao.UserDao;
-import com.cashu.budgetapp.model.Role;
 import com.cashu.budgetapp.model.User;
 import com.cashu.budgetapp.model.UserRole;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,13 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.security.auth.login.AccountLockedException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
 @Service("userService")
-public class UserServiceImpl implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Resource(name = "userDao")
     private UserDao userDao;
