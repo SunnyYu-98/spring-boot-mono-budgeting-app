@@ -1,6 +1,6 @@
 package com.cashu.budgetapp.security;
 
-import com.cashu.budgetapp.service.UserServiceImpl;
+import com.cashu.budgetapp.service.UserService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Resource(name = "userService")
-    private UserServiceImpl userService;
+    private UserService userService;
 
     private Logger logger = LoggerFactory.getLogger(CustomAuthenticationFailureHandler.class);
 

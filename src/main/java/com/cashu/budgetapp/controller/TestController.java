@@ -2,7 +2,7 @@ package com.cashu.budgetapp.controller;
 
 import com.cashu.budgetapp.dao.UserDao;
 import com.cashu.budgetapp.model.User;
-import com.cashu.budgetapp.service.UserServiceImpl;
+import com.cashu.budgetapp.service.UserService;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,7 @@ public class TestController {
     private UserDao userDao;
 
     @Resource(name = "userService")
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @Transactional
     @GetMapping("/hello2")
@@ -66,7 +66,7 @@ public class TestController {
 
          */
 
-        User user = userServiceImpl.getUserByEmail("sunny");
+        User user = userService.getUserByEmail("sunny");
 
         if (user != null) {
             int failedCount = user.getNumberOfFailedLogins() + 1;
@@ -76,7 +76,7 @@ public class TestController {
                 user.setLocked(true);
             }
 
-            userServiceImpl.saveUser(user);
+            userService.saveUser(user);
         }
 
         return "hello";
