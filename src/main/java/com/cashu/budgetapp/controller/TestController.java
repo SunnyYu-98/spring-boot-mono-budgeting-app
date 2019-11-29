@@ -91,6 +91,10 @@ public class TestController {
         System.out.println(user.getEventName());
          */
 
+        User user = userService.getCurrentLoggedInUser();
+        if(user != null)
+            System.out.println("Currently logged in user: " + user.getEmail() + " " + user.getPhoneNumber());
+
         return "home";
     }
 }
