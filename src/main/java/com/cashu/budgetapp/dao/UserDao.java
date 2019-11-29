@@ -4,4 +4,5 @@ import com.cashu.budgetapp.model.User;
 
 public interface UserDao {
     User findUserByEmail(String email);
+    void saveUser(User user);
 }

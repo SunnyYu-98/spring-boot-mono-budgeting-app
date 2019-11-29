@@ -22,4 +22,36 @@ public class UserCategoryBudget implements Serializable {
 
     @Column(name = "budget_percentage")
     private int budgetPercentage;
+
+    public Long getUserCategoryBudgetId() {
+        return userCategoryBudgetId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ExpenseCategory getCategory() {
+        return category;
+    }
+
+    public int getBudgetPercentage() {
+        return budgetPercentage;
+    }
+
+    public void setUserCategoryBudgetId(Long userCategoryBudgetId) {
+        this.userCategoryBudgetId = userCategoryBudgetId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCategory(ExpenseCategory category) {
+        this.category = category;
+    }
+
+    public void setBudgetPercentage(int budgetPercentage) {
+        this.budgetPercentage = budgetPercentage;
+    }
 }

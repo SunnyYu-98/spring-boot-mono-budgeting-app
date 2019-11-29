@@ -1,9 +1,13 @@
 package com.cashu.budgetapp.configuration;
 
+import com.cashu.budgetapp.security.CustomAuthenticationFailureHandler;
+import com.cashu.budgetapp.security.CustomAuthenticationSuccessHandler;
+import com.cashu.budgetapp.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,31 +30,41 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    @Resource(name = "customAuthenticationSuccessHandler")
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Resource(name = "customAuthenticationFailureHandler")
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+
+    @Resource(name = "userService")
+    private UserServiceImpl userService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
+        auth.userDetailsService(userService)
+                .and()
+                .jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
-    /*
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .authorizeRequests()
                 .antMatchers("/login").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .csrf().disable()
                 .formLogin()
-                .usernameParameter("email")
-                .passwordParameter("password")
+                .loginPage("/login")
+                .permitAll()
+                .successHandler(customAuthenticationSuccessHandler)
+                .failureHandler(customAuthenticationFailureHandler)
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/");
+                .permitAll();
     }
-     */
-
-
 }
