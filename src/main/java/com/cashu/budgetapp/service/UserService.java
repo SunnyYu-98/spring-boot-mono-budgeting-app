@@ -3,8 +3,11 @@ package com.cashu.budgetapp.service;
 import com.cashu.budgetapp.dao.UserDao;
 import com.cashu.budgetapp.model.User;
 import com.cashu.budgetapp.model.UserRole;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +38,19 @@ public class UserService implements UserDetailsService {
         userDao.saveUser(user);
     }
 
+    public User getCurrentLoggedInUser() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+
+            return principal instanceof UserDetails ? getUserByEmail(((UserDetails) principal).getUsername()) : null;
+        }
+
+        return null;
+    }
+
     @Transactional
     public void lockUser(String username) {
         //username = email
@@ -57,11 +73,8 @@ public class UserService implements UserDetailsService {
         User user = getUserByEmail(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Invalid username or password");
+            throw new UsernameNotFoundException("Username does not exist in our database!");
         }
-        /*else if (user.isLocked())
-            throw new AccountLockedException("Account is locked");
-         */
 
         return new org.springframework.security.core.userdetails.User(username, user.getPassword(), user.isEnabled(),
                 true, true, !user.isLocked(), getAuthorities(user));
