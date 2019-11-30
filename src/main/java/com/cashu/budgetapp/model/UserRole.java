@@ -12,7 +12,7 @@ public class UserRole implements Serializable {
     @Column(name = "user_role_id")
     private int userRoleId;
 
-    @OneToOne(targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
 

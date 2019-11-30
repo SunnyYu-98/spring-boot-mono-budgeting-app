@@ -10,12 +10,12 @@ public class UserEvent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private Long eventID;
+    private int eventID;
 
     @Column(name = "event_name")
     private String eventName;
 
-    public Long getEventID() {
+    public int getEventID() {
         return eventID;
     }
 
@@ -23,7 +23,7 @@ public class UserEvent implements Serializable {
         return eventName;
     }
 
-    public void setEventID(Long eventID) {
+    public void setEventID(int eventID) {
         this.eventID = eventID;
     }
 

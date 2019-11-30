@@ -11,7 +11,7 @@ public class Expenses implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "expense_id")
-    private Long expenseId;
+    private int expenseId;
 
     @Column (name = "amount")
     private double amount;
@@ -30,7 +30,7 @@ public class Expenses implements Serializable {
     @JoinColumn(name = "expense_cat_id")
     private ExpenseCategory category;
 
-    public void setExpenseId(Long expenseId) {
+    public void setExpenseId(int expenseId) {
         this.expenseId = expenseId;
     }
 
@@ -54,7 +54,7 @@ public class Expenses implements Serializable {
         this.category = category;
     }
 
-    public Long getExpenseId() {
+    public int getExpenseId() {
         return expenseId;
     }
 

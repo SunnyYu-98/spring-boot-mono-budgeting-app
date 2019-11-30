@@ -10,7 +10,7 @@ public class UserNotificationSetting implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notification_set_id")
-    private Long notificationSettingId;
+    private int notificationSettingId;
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
@@ -23,7 +23,7 @@ public class UserNotificationSetting implements Serializable {
     @Column(name = "notification_type")
     private String notificationType;
 
-    public Long getNotificationSettingId() {
+    public int getNotificationSettingId() {
         return notificationSettingId;
     }
 
@@ -39,7 +39,7 @@ public class UserNotificationSetting implements Serializable {
         return notificationType;
     }
 
-    public void setNotificationSettingId(Long notificationSettingId) {
+    public void setNotificationSettingId(int notificationSettingId) {
         this.notificationSettingId = notificationSettingId;
     }
 

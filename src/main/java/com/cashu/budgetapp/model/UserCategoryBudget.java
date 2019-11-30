@@ -10,7 +10,7 @@ public class UserCategoryBudget implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_cat_bud_id")
-    private Long userCategoryBudgetId;
+    private int userCategoryBudgetId;
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
@@ -23,7 +23,7 @@ public class UserCategoryBudget implements Serializable {
     @Column(name = "budget_percentage")
     private int budgetPercentage;
 
-    public Long getUserCategoryBudgetId() {
+    public int getUserCategoryBudgetId() {
         return userCategoryBudgetId;
     }
 
@@ -39,7 +39,7 @@ public class UserCategoryBudget implements Serializable {
         return budgetPercentage;
     }
 
-    public void setUserCategoryBudgetId(Long userCategoryBudgetId) {
+    public void setUserCategoryBudgetId(int userCategoryBudgetId) {
         this.userCategoryBudgetId = userCategoryBudgetId;
     }
 

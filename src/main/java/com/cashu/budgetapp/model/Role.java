@@ -16,10 +16,6 @@ public class Role implements Serializable {
     @Column(name = "role")
     private String role;
 
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "userRoleId", targetEntity = UserRoleId.class)
-    //private List<UserRole> userRole = new ArrayList<>();
-
-
     public int getRoleId() {
         return roleId;
     }
