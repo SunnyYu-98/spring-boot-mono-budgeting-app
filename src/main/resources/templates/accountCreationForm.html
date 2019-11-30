@@ -6,14 +6,18 @@
 </head>
 <body>
 
-<form th:object="${accountSubmitForm}" action="/create-Account" method="POST">
-    <input type="text" placeholder="First Name" th:field="*{firstName}"/>
-    <input type="text" placeholder="Last Name" th:field="*{lastName}"/>
-    <input type="text" placeholder="Email" th:field="*{email}"/>
-    <input type="password" placeholder="Password" th:field="*{password}"/>
-    <input type="text" placeholder="Phone Number" th:field="*{phoneNumber}"/>
-    <input type="text" placeholder="Birth Date" th:field="*{birthDate}"/>
-    <input type="text" placeholder="Budget Type" th:field="*{budgetType}"/>
+<script src="js/accountCreation.js"></script>
+
+<form th:object="${accountSubmitForm}" th:action="@{/create-account}" method="POST">
+    <input type="text" class="js-firstName" placeholder="First Name" th:field="*{firstName}"/>
+    <input type="text" class="js-lastName" placeholder="Last Name" th:field="*{lastName}"/>
+    <input type="text" class="js-email" placeholder="Email" th:field="*{email}"/>
+    <input type="password" class="js-password" placeholder="Password" th:field="*{password}"/>
+    <input type="text" class="js-phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}"/>
+
+    <input type="text" class="js-birthDate" placeholder="Birth Date" th:field="*{birthDate}"/>
+
+    <input type="text" class="js-budgetType" placeholder="Budget Type" th:field="*{budgetType}"/>
 
     <button type="submit">Submit</button>
     <button type="reset">Clear Form</button>
