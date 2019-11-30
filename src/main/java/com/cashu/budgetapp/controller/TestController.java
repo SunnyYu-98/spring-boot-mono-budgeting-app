@@ -1,23 +1,20 @@
 package com.cashu.budgetapp.controller;
 
-import com.cashu.budgetapp.dao.UserDao;
 import com.cashu.budgetapp.model.User;
+import com.cashu.budgetapp.model.UserCategoryBudget;
+import com.cashu.budgetapp.service.ExpenseCategoryService;
+import com.cashu.budgetapp.service.UserCategoryBudgetService;
 import com.cashu.budgetapp.service.UserService;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * This is a controller firmly for testing purposes
@@ -28,11 +25,14 @@ public class TestController {
     @PersistenceContext
     EntityManager em;
 
-    @Resource(name = "userDao")
-    private UserDao userDao;
-
     @Resource(name = "userService")
     private UserService userService;
+
+    @Resource(name = "userCategoryBudgetService")
+    private UserCategoryBudgetService userCategoryBudgetService;
+
+    @Resource(name = "expenseCategoryService")
+    private ExpenseCategoryService expenseCategoryService;
 
     @Transactional
     @GetMapping("/hello2")
@@ -92,8 +92,16 @@ public class TestController {
          */
 
         User user = userService.getCurrentLoggedInUser();
-        if(user != null)
+        if(user != null) {
             System.out.println("Currently logged in user: " + user.getEmail() + " " + user.getPhoneNumber());
+
+            System.out.println("Getting UserCategoryBudgets");
+            List<UserCategoryBudget> userBudgets = user.getAllUserBudgets();
+            System.out.println("UserBudget#1: " + userBudgets.get(0).getCategory().getCategoryName() + ", " + userBudgets.get(0).getBudgetPercentage() + "%");
+
+            UserCategoryBudget budget = userCategoryBudgetService.getUserCategoryBudgetByUserAndCategory(user, expenseCategoryService.getCategoryById(1));
+            System.out.println("UserBudget#2: " + budget.getCategory().getCategoryName() + ", " + budget.getBudgetPercentage() + "%");
+        }
 
         return "home";
     }
