@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account - Cash U</title>
+</head>
+<body>
+
+<script src="js/accountCreation.js"></script>
+
+<form th:object="${accountSubmitForm}" th:action="@{/create-account}" method="POST">
+    <input type="text" class="js-firstName" placeholder="First Name" th:field="*{firstName}"/>
+    <input type="text" class="js-lastName" placeholder="Last Name" th:field="*{lastName}"/>
+    <input type="text" class="js-email" placeholder="Email" th:field="*{email}"/>
+    <input type="password" class="js-password" placeholder="Password" th:field="*{password}"/>
+    <input type="text" class="js-phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}"/>
+
+    <input type="text" class="js-birthDate" placeholder="Birth Date" th:field="*{birthDate}"/>
+
+    <input type="text" class="js-budgetType" placeholder="Budget Type" th:field="*{budgetType}"/>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Clear Form</button>
+</form>
+
+
+</body>
+</html>
