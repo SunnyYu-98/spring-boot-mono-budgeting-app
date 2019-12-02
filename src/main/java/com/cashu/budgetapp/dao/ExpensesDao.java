@@ -4,7 +4,7 @@ import com.cashu.budgetapp.model.Expenses;
 public interface ExpensesDao {
 
     // delete expense and save and find
-  // Expenses findExpenseById(int Id);
+    Expenses getExpenseById(int Id);
     void deleteExpense(int ExpensesId);
     void saveExpense( Expenses expenses);
 

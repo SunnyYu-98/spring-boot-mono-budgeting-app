@@ -20,22 +20,20 @@ public class ExpenseDaoImpl implements ExpensesDao {
     EntityManager entityManager;
 
 
-    /*
+
     @Override
-    public Expenses findExpenseById(int Id) {
+    public Expenses getExpenseById(int Id) {
 
-        Query query = entityManager.createNativeQuery("SELECT * FROM expenses WHERE expense_id=?1", User.class);
-        query.setParameter(1, Id);
-        // NEEDS WORK ON THIS. Return statement
 
+        return entityManager.find(Expenses.class,Id);
     }
 
-     */
+
 
     public void deleteExpense(int ExpensesId) {
 
       Query query = entityManager.createNativeQuery(" delete from expenses where expense_id = ?1", Expenses.class);
-        query.setParameter(1, ExpensesId);
+      query.setParameter(1, ExpensesId);
 
 
     }
@@ -48,17 +46,7 @@ public class ExpenseDaoImpl implements ExpensesDao {
         entityManager.persist(expenses);
     }
 
-    private void executeInsideTransaction(Consumer<EntityManager> action) {
-        EntityTransaction tx = entityManager.getTransaction();
-        try {
-            tx.begin();
-            action.accept(entityManager);
-            tx.commit();
-        } catch (RuntimeException e) {
-            tx.rollback();
-            throw e;
-        }
-    }
+
 
 
 }
