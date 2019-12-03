@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+//import sun.nio.ch.DatagramChannelImpl;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -22,6 +24,8 @@ public class EmailService {
         msg.setSubject("Testing from Spring Boot");
         msg.setText("Hello World \n Spring Boot Email");
 
+
+        JavaMailSender javaMailSender = new JavaMailSenderImpl();
         javaMailSender.send(msg);
 
     }
