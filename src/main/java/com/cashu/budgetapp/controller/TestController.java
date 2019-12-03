@@ -79,7 +79,7 @@ public class TestController {
             userService.saveUser(user);
         }
 
-        return "hello";
+        return "privacy";
     }
 
     @GetMapping("/")
