@@ -35,4 +35,8 @@ public class UserDaoImpl implements UserDao {
     public void saveUser(User user) {
         entityManager.persist(user);
     }
+
+    public User createUser() {
+        return new User();
+    }
 }
