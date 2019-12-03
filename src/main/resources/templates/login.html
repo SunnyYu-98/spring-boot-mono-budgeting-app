@@ -1,31 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title> Cash U Budgeting App </title>
-    </head>
-    <body>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <th:block th:if="${param.error != null}">
-            <div th:text="${error}">
-            </div>
-        </th:block>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
-    </body>
-</html>
-
-
-<!--
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <link rel="icon" href="/images/Cash-U Tab Icon.PNG">
+    <link rel="icon" href="/img/Cash-U Tab Icon.PNG">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/login.css">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
@@ -39,31 +16,32 @@
         <h1>Cash-U<span class="color">.</span></h1>
         <nav>
             <ul>
-                <li><a href="/html/homepage.html">Home</a></li>
-                <li><a href="/html/budget.html">Budget</a></li>
-                <li><a href="/html/contact.html">Contact</a></li>
-                <li><a href="/html/login.html">Login</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
     </div>
 </header>
 <div class="login-page">
     <div class="form">
-        <form class="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="/html/login.html">Sign In</a></p>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <th:block th:if="${param.error != null}">
+            <div th:text="${error}">
+            </div>
+        </th:block>
+        <form class="login-form" th:action="@{/login}" method="post">
+            <input type="text" placeholder="Username" name="username"/>
+            <input type="password" placeholder="Password" name="password"/>
+            <button type="submit">login</button>
+            <p class="message">Not registered?
+                <a href="/register">
+                Create an account</a>
+            </p>
         </form>
-        <form class="login-form">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="/html/register.html">
-                Create an account</a></p>
-        </form>
+    </div>
+</div>
 </body>
-</div>
-</div>
-  -->
+
+</html>
