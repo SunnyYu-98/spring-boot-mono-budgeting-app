@@ -1,6 +1,7 @@
 package com.cashu.budgetapp.service;
 
 import com.cashu.budgetapp.dao.UserDao;
+import com.cashu.budgetapp.model.AccountCreationForm;
 import com.cashu.budgetapp.model.User;
 import com.cashu.budgetapp.model.UserRole;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -36,6 +38,24 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void saveUser(User user){
         userDao.saveUser(user);
+    }
+
+    @Transactional
+    public User createUserFromCreationForm(AccountCreationForm form) {
+        User user = userDao.createUser();
+        user.setEnabled(true);
+        user.setLocked(false);
+        user.setNumberOfFailedLogins(0);
+
+
+        user.setCreatedDate(new Date());
+
+        //field value validations are done in the front end
+        user.setFirstName(form.getFirstName());
+
+        saveUser(user);
+
+        return user;
     }
 
     public User getCurrentLoggedInUser() {

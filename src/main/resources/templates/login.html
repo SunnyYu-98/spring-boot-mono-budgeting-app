@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title> Cash U Budgeting App </title>
-    </head>
-    <body>
+<head>
+    <link rel="icon" href="/img/Cash-U Tab Icon.PNG">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <h1>Cash-U<span class="color">.</span></h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="login-page">
+    <div class="form">
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
@@ -12,10 +31,17 @@
             <div th:text="${error}">
             </div>
         </th:block>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+        <form class="login-form" th:action="@{/login}" method="post">
+            <input type="text" placeholder="Username" name="username"/>
+            <input type="password" placeholder="Password" name="password"/>
+            <button type="submit">login</button>
+            <p class="message">Not registered?
+                <a href="/register">
+                Create an account</a>
+            </p>
         </form>
-    </body>
+    </div>
+</div>
+</body>
+
 </html>

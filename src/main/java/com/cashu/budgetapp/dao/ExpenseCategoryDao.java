@@ -11,7 +11,8 @@ public class ExpenseCategoryDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public ExpenseCategory getCategoryById(int id){
+    public ExpenseCategory getCategoryById(int id)
+    {
         return entityManager.find(ExpenseCategory.class, id);
     }
 }

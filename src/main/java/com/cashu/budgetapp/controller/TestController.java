@@ -35,7 +35,7 @@ public class TestController {
     private ExpenseCategoryService expenseCategoryService;
 
     @Transactional
-    @GetMapping("/hello2")
+    @GetMapping("/test")
     public String test(HttpServletRequest request, Model model){
         //******** NOTE: Any function that changes the database, have to have the @Transactional annotation *******
         /*
@@ -79,10 +79,10 @@ public class TestController {
             userService.saveUser(user);
         }
 
-        return "hello";
+        return "privacy";
     }
 
-    @GetMapping("/")
+    @GetMapping("/test2")
     public String test2(HttpServletRequest request, Model model){
 
         /* //Get user by ID
@@ -103,6 +103,6 @@ public class TestController {
             System.out.println("UserBudget#2: " + budget.getCategory().getCategoryName() + ", " + budget.getBudgetPercentage() + "%");
         }
 
-        return "home";
+        return "testhome";
     }
 }
