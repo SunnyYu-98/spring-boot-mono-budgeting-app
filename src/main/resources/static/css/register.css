@@ -41,7 +41,10 @@ header nav ul li a {
     display: block;
     margin-right: 20px;
 }
-/*End of Style Format*/
+
+.error {
+    color: red;
+}
 
 
 

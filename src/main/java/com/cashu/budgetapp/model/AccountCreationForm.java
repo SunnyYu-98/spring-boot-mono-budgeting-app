@@ -9,7 +9,6 @@ public class AccountCreationForm implements Serializable {
     private String password;
     private String phoneNumber;
     private String birthDate;
-    private String budgetType;
 
     public String getFirstName() {
         return firstName;
@@ -35,10 +34,6 @@ public class AccountCreationForm implements Serializable {
         return birthDate;
     }
 
-    public String getBudgetType() {
-        return budgetType;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -61,9 +56,5 @@ public class AccountCreationForm implements Serializable {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public void setBudgetType(String budgetType) {
-        this.budgetType = budgetType;
     }
 }

@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/register.css">
     <link rel="icon" href="/img/Cash-U Tab Icon.PNG">
-    <title>Document</title>
+    <title>Create Account - Cash U</title>
+    <script src="js/lib/jquery-3.4.1.min.js"></script>
+    <script src="js/register.js"></script>
 </head>
 
 <body>
@@ -25,60 +27,62 @@
     </div>
 </header>
 <div class="form">
-    <form id="contactForm">
-        <p class="contact">
-            <label for="firstName">First Name</label>
-        </p>
-        <input id="firstName" name="firstName" placeholder="First Name" tabindex="1" type="text" required>
+    <form id="contactForm" th:object="${accountSubmitForm}" th:action="@{/register}" method="POST">
+        <div class="js-firstName">
+            <p class="contact">
+                <label for="firstName">First Name</label>
+                <span class="js-error error" hidden>&emsp; * Name cannot contain numbers</span>
+            </p>
+            <input id="firstName" name="firstName" placeholder="First Name" tabindex="1" type="text" th:field="*{firstName}" required>
+        </div>
 
-        <p class="contact">
-            <label for="lastName">Last Name</label>
-        </p>
-        <input id="lastName" name="lastName" placeholder="Last Name" tabindex="1" type="text" required>
+        <div class="js-lastName">
+            <p class="contact">
+                <label for="lastName">Last Name</label>
+                <span class="js-error error" hidden>&emsp; * Name cannot contain numbers</span>
+            </p>
+            <input id="lastName" name="lastName" placeholder="Last Name" tabindex="1" type="text" th:field="*{lastName}" required>
+        </div>
 
-        <p class="contact">
-            <label for="email">Email</label>
-        </p>
-        <input id="email" name="email" placeholder="example@domain.com" type="email" required>
+        <div class="js-email">
+            <p class="contact">
+                <label for="email">Email</label>
+                <span class="js-error error" hidden>&emsp; * Email already taken</span>
+            </p>
+            <input id="email" name="email" placeholder="example@domain.com" type="email" th:field="*{email}" required>
+        </div>
 
-        <p class="contact">
-            <label for="password">Create a password</label>
-        </p>
-        <input type="password" id="password" name="Password" required>
+        <div class="js-password">
+            <p class="contact">
+                <label for="password">Create a password</label>
+            </p>
+            <input type="password" id="password" name="Password" th:field="*{password}" required>
+        </div>
 
-        <p class="contact">
-            <label for="confirmPassword">Confirm your password</label>
-        </p>
-        <input type="password" id="confirmPassword" name="ConfirmPassword" required>
+        <div class="js-confirm-password">
+            <p class="contact">
+                <label for="confirmPassword">Confirm your password</label>
+                <span class="js-error error" hidden>&emsp; * Password does not match</span>
+            </p>
+            <input type="password" id="confirmPassword" name="ConfirmPassword" required>
+        </div>
 
-        <fieldset>
-            <label>Birthday: </label>
-            <label class="month">
-                <select class="select-style" name="BirthMonth" required>
-                    <option value="">Month</option>
-                    <option value="01"> January</option>
-                    <option value="02"> February</option>
-                    <option value="03"> March</option>
-                    <option value="04"> April</option>
-                    <option value="05"> May</option>
-                    <option value="06"> June</option>
-                    <option value="07"> July</option>
-                    <option value="08"> August</option>
-                    <option value="09"> September</option>
-                    <option value="10"> October</option>
-                    <option value="11"> November</option>
-                    <option value="12"> December</option>
-                </select>
-            </label>
+        <div class="js-birth-date birthDate">
+            <p class="contact">
+                <label for="birthDate">Birth Date: </label>
+                <span class="js-error error" hidden>&emsp; * Invalid date</span>
+            </p>
+            <input id="birthDate" name="birthDate" placeholder="YYYY-MM-DD" type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" th:field="*{birthDate}" required>
+        </div>
 
-            <label for="birthDay">Day: </label>
-            <input id="birthDay" class="birthDay" maxlength="2" name="birthDay" placeholder="Day" required>
+        <div class="js-phoneNumber">
+            <p class="contact">
+                <label for="phone">Phone Number</label>
+                <span class="js-error error" hidden>&emsp;* Invalid phone number</span>
+            </p>
+            <input class="js-phoneNumber" id="phone" name="phone" placeholder="123-123-1234" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field="*{phoneNumber}" required> <br>
+        </div>
 
-            <label for="birthYear">Year: </label>
-            <input id="birthYear" class="birthYear" maxlength="4" name="birthYear" placeholder="Year" required>
-        </fieldset>
-        <p class="contact"><label for="phone">Phone Number</label></p>
-        <input id="phone" name="phone" placeholder="Phone number" required="" type="text"> <br>
         <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">
     </form>
 </div>
