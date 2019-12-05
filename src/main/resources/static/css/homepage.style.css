@@ -91,10 +91,19 @@ header nav ul li a {
     display: block;
     margin-right: 20px;
 }
+
+.article1 {
+    background-image: url('/img/article-image-1.jpg');
+}
+
+.article2 {
+    background-image: url('/img/article-image-2.jpg');
+}
+
 #hero-image {
     height: 580px;
     padding-top: 1px;
-    background: #e8eced url('/images/paper.jpg') no-repeat center;
+    background: #e8eced url('/img/paper.jpg') no-repeat center;
 }
 #hero-image h2 {
     margin: 180px 0 40px 0;
@@ -126,13 +135,13 @@ header nav ul li a {
     text-align: center;
 }
 #features ul li.feature-1 {
-    background: url('/images/features-icon-1.png') no-repeat top center;
+    background: url('/img/features-icon-1.png') no-repeat top center;
 }
 #features ul li.feature-2 {
-    background: url('/images/features-icon-2.png') no-repeat top center;
+    background: url('/img/features-icon-2.png') no-repeat top center;
 }
 #features ul li.feature-3 {
-    background: url('/images/features-icon-3.png') no-repeat top center;
+    background: url('/img/features-icon-3.png') no-repeat top center;
 }
 #primary-content {
     background-color: #f8fafa;

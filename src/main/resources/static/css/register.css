@@ -128,7 +128,7 @@ header nav ul li a {
     -webkit-padding-end: 20px;
     -webkit-padding-start: 2px;
     -webkit-user-select: none;
-    background-image: url(images/select-arrow.png),
+    background-image: url('/img/select-arrow.png'),
     -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
     background-position: center right;
     background-repeat: no-repeat;

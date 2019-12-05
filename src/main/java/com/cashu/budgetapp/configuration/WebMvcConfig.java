@@ -20,11 +20,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(
+                "/resources/**",
                 "/js/**",
-                "/css/**")
+                "/css/**",
+                "/img/**")
                 .addResourceLocations(
+                        "/resources/",
                         "classpath:/static/js/",
-                        "classpath:/static/css/");
+                        "classpath:/static/css/",
+                        "classpath:/static/img/");
     }
 
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -33,4 +37,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         //registry.addViewController("/hello").setViewName("hello");
        // registry.addViewController("/login").setViewName("login");
     }
+
+
 }
