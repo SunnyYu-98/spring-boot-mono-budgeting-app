@@ -47,6 +47,7 @@ public class UserService implements UserDetailsService {
         user.setLocked(false);
         user.setNumberOfFailedLogins(0);
 
+        //will need to encode the password
 
         user.setCreatedDate(new Date());
 
