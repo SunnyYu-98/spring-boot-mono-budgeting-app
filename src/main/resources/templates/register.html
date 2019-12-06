@@ -47,7 +47,8 @@
         <div class="js-email">
             <p class="contact">
                 <label for="email">Email</label>
-                <span class="js-error error" hidden>&emsp; * Email already taken</span>
+                <span class="js-error emailTakenError error" hidden>&emsp; * Email already taken</span>
+                <span class="js-error inputError error" hidden>&emsp; * Email can only contain letters, numbers, @, _ and .</span>
             </p>
             <input id="email" name="email" placeholder="example@domain.com" type="email" th:field="*{email}" required>
         </div>
