@@ -39,7 +39,7 @@
         <div class="js-lastName">
             <p class="contact">
                 <label for="lastName">Last Name</label>
-                <span class="js-error error" hidden>&emsp; * Name cannot contain numbers</span>
+                <span class="js-error error" hidden>&emsp; * Name can only contain letters</span>
             </p>
             <input id="lastName" name="lastName" placeholder="Last Name" tabindex="1" type="text" th:field="*{lastName}" required>
         </div>
@@ -56,6 +56,7 @@
         <div class="js-password">
             <p class="contact">
                 <label for="password">Create a password</label>
+                <span class="js-error error" hidden>&emsp; * Password length has to be greater than 8</span>
             </p>
             <input type="password" id="password" name="Password" th:field="*{password}" required>
         </div>
@@ -79,9 +80,9 @@
         <div class="js-phoneNumber">
             <p class="contact">
                 <label for="phone">Phone Number</label>
-                <span class="js-error error" hidden>&emsp;* Invalid phone number</span>
+                <span class="js-error error" hidden>&emsp;* Phone number must have 10 digits</span>
             </p>
-            <input class="js-phoneNumber" id="phone" name="phone" placeholder="123-123-1234" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field="*{phoneNumber}" required> <br>
+            <input class="js-phoneNumber" id="phone" name="phone" placeholder="1234567890" type="tel" pattern="[0-9]{10}" th:field="*{phoneNumber}" required> <br>
         </div>
 
         <input class="btn" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">
