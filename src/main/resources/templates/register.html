@@ -31,7 +31,7 @@
         <div class="js-firstName">
             <p class="contact">
                 <label for="firstName">First Name</label>
-                <span class="js-error error" hidden>&emsp; * Name cannot contain numbers</span>
+                <span class="js-error error" hidden>&emsp; * Name can only contain letters</span>
             </p>
             <input id="firstName" name="firstName" placeholder="First Name" tabindex="1" type="text" th:field="*{firstName}" required>
         </div>
@@ -84,7 +84,7 @@
             <input class="js-phoneNumber" id="phone" name="phone" placeholder="123-123-1234" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field="*{phoneNumber}" required> <br>
         </div>
 
-        <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">
+        <input class="btn" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">
     </form>
 </div>
 </body>

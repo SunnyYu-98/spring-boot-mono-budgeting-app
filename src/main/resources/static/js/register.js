@@ -24,8 +24,10 @@ $(document).on('change', 'input', function(event) {
         $input.val($input.val().replace(/\s+/g, ' ').trim());
         if (!$input.val().match(lettersAndSpaceRegex)) {
             $('.js-firstName .error').show();
+            disableSubmitButton();
         } else {
             $('.js-firstName .error').hide();
+            enableSubmitButton();
         }
     }
 
@@ -36,8 +38,10 @@ $(document).on('change', 'input', function(event) {
         $input.val($input.val().replace(/\s+/g, ' ').trim());
         if (!$input.val().match(lettersAndSpaceRegex)) {
             $('.js-lastName .error').show();
+            disableSubmitButton();
         } else {
             $('.js-lastName .error').hide();
+            enableSubmitButton();
         }
     }
 
@@ -47,22 +51,39 @@ $(document).on('change', 'input', function(event) {
         //Replace extra spaces with one space, and trim trailing spaces
         $input.val($input.val().replace(/\s+/g, '').trim());
 
-        if (!$input.val().match(/^[A-Za-z0-9._@]+$/)) {
+        if (!$input.val().match(/^[A-Za-z0-9._@]+$/) && $input.val() != "") {
             $('.js-email .inputError').show();
+            disableSubmitButton();
         } else {
             $('.js-email .inputError').hide();
+
+            $.ajax({
+                url: "/verify-email?email=" + $input.val()
+            }).done(function (data){
+                if(data.emailAlreadyTaken){
+                    $('.js-email .emailTakenError').show();
+                    disableSubmitButton();
+                }
+                else{
+                    $('.js-email .emailTakenError').hide();
+                    enableSubmitButton();
+                }
+            });
         }
 
-        $.ajax({
-            url: "/verify-email?email=" + $input.val()
-        }).done(function (data){
-            if(data.emailAlreadyTaken){
-                $('.js-email .emailTakenError').show();
-            }
-            else{
-                $('.js-email .emailTakenError').hide();
-            }
-        });
+
+    }
+
+    if (eventClassList.contains("js-confirm-password")) {
+        let $input = $('.js-confirm-password input');
+
+        if ($input.val() !== $('.js-password input').val()) {
+            $('.js-confirm-password .error').show();
+            disableSubmitButton();
+        } else {
+            $('.js-confirm-password .error').hide();
+            enableSubmitButton();
+        }
     }
 
 
@@ -91,6 +112,14 @@ $(document).on('change', 'input', function(event) {
 
      */
 });
+
+function disableSubmitButton() {
+    $('.btn[name=submit]').addClass("disabled");
+}
+
+function enableSubmitButton() {
+    $('.btn[name=submit]').removeClass("disabled");
+}
 
 function validateRegistrationForm() {
     if(!$('.js-firstName input').val().match("[a-zA-Z]*")){
