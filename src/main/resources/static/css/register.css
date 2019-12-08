@@ -147,7 +147,7 @@ header nav ul li a {
     width: 410px;
 }
 
-.form input.buttom {
+.form input.btn {
     background: #0099CC;
     display: inline-block;
     padding: 5px 10px 6px;
@@ -169,6 +169,12 @@ header nav ul li a {
     font-family: Verdana, Geneva, sans-serif;
 }
 
-.form input.buttom:hover {
+.form input.btn:hover {
     background-color: #0099CC;
+}
+
+.form input.btn.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    pointer-events: none;
 }
