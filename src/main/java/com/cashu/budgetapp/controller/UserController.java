@@ -1,6 +1,7 @@
 package com.cashu.budgetapp.controller;
 
 import com.cashu.budgetapp.model.AccountCreationForm;
+import com.cashu.budgetapp.model.User;
 import com.cashu.budgetapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,18 @@ public class UserController {
 
     @PostMapping("/register")
     public String createAccount(HttpServletRequest request, Model model, @ModelAttribute("accountSubmitForm") AccountCreationForm form) {
-        //User user = userService.createUserFromCreationForm(form);
+        User user = userService.createUserFromCreationForm(form);
 
-        return "register";
+        if(user == null) {
+            model.addAttribute("accountCreated", false);
+
+            return "register";
+        }
+
+        //set security context to user and show who's logged in
+
+
+        return "budget";
     }
 
     @RequestMapping(value = "/verify-email", params = "email", method = RequestMethod.GET)

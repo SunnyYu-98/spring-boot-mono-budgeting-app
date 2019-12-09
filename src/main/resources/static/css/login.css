@@ -1,8 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body 
 {
-  background-color: #fff;
-  color: #777;
+  /*background-color: #fff;*/
+  background: url("/img/login-background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #e5e5e5;
   font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 p {
@@ -12,7 +17,7 @@ p {
 h1 {
   font-family: 'Crete Round', serif;
   font-weight: bold;
-  color: #444;
+  color: #e5e5e5;
   font-size: 45px;
   margin-bottom: 20px;
 }
@@ -35,7 +40,7 @@ header nav ul li {
   margin-top: 50px;
 }
 header nav ul li a {
-  color: #444;
+  color: #e5e5e5;
   text-transform: uppercase;
   font-weight: bold;
   display: block;
@@ -107,6 +112,10 @@ header nav ul li a {
   margin: 0 auto;
 }
 
+.error {
+  color: red;
+}
+
 /*container:before, .container:after {
   content: "";
   display: block;
@@ -135,7 +144,7 @@ header nav ul li a {
   color: #EF3B3A;
 }
 /*body {
-  background: #0099CC; /* fallback for old browsers 
+  background: #0099CC; /* fallback for old browsers
   background: -webkit-linear-gradient(right, #0099CC, #0099CC);
   background: -moz-linear-gradient(right, #0099CC, #0099CC);
   background: -o-linear-gradient(right, #0099CC, #0099CC);

@@ -72,7 +72,7 @@
         <div class="js-birth-date birthDate">
             <p class="contact">
                 <label for="birthDate">Birth Date: </label>
-                <span class="js-error error" hidden>&emsp; * Invalid date</span>
+                <span class="js-error error" hidden>&emsp; * Invalid date, must be in YYYY-MM-DD format</span>
             </p>
             <input id="birthDate" name="birthDate" placeholder="YYYY-MM-DD" type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" th:field="*{birthDate}" required>
         </div>

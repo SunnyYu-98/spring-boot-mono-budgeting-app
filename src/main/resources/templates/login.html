@@ -28,7 +28,7 @@
             You have been logged out.
         </div>
         <th:block th:if="${param.error != null}">
-            <div th:text="${error}">
+            <div class="error" th:text="${error}">
             </div>
         </th:block>
         <form class="login-form" th:action="@{/login}" method="post">
