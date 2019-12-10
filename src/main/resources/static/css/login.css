@@ -14,12 +14,51 @@ p {
   line-height: 20px;
   margin-bottom: 20px;
 }
-h1 {
+
+header {
+  height: 120px;
+  margin: 0 auto;
+  padding: 0 10px;
+  width: 1000px;
+  color: #e5e5e5;
+  font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+header h1 {
+  float: left;
+  margin-top: 32px;
   font-family: 'Crete Round', serif;
   font-weight: bold;
   color: #e5e5e5;
   font-size: 45px;
   margin-bottom: 20px;
+}
+
+header h1 .color {
+  color: #0099CC;
+}
+
+header nav {
+  float: right;
+}
+
+header nav ul li {
+  text-align: center;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+header nav ul li a {
+  color: #e5e5e5;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  margin-right: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #444;
 }
 
 .login-page 
