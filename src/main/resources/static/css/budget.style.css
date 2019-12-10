@@ -1,12 +1,6 @@
 /**********************************************
 *** GENERAL
 **********************************************/
-body 
-{
-  background-color: #fff;
-  color: #777;
-  font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
 p {
   line-height: 20px;
   margin-bottom: 20px;
@@ -18,31 +12,7 @@ h1 {
   font-size: 45px;
   margin-bottom: 20px;
 }
-header {
-  height: 120px;
-}
-header h1 {
-  float: left;
-  margin-top: 32px;
-}
-header h1 .color {
-  color: #0099CC;
-}
-header nav {
-  float: right;
-}
-header nav ul li {
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-}
-header nav ul li a {
-  color: #444;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin-right: 20px;
-} 
+
 /*End of Style Format*/
 * {
     margin: 0;
@@ -246,7 +216,7 @@ body {
     width: 475px;
 }
 
-h2 
+h2
 {
     text-transform: uppercase;
     font-size: 18px;

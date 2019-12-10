@@ -21,45 +21,19 @@ h1 {
   font-size: 45px;
   margin-bottom: 20px;
 }
-header {
-  height: 120px;
-}
-header h1 {
-  float: left;
-  margin-top: 32px;
-}
-header h1 .color {
-  color: #0099CC;
-}
-header nav {
-  float: right;
-}
-header nav ul li {
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-}
-header nav ul li a {
-  color: #e5e5e5;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin-right: 20px;
-} 
-/*End of Style Format*/
 
 .login-page 
 {
   width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
+  padding: 0;
+  margin: 0 auto;
 }
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 100px auto;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -116,85 +90,7 @@ header nav ul li a {
   color: red;
 }
 
-/*container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
+.account-created {
+  color: #1e7e34;
+  margin-bottom: 10px;
 }
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
-/*body {
-  background: #0099CC; /* fallback for old browsers
-  background: -webkit-linear-gradient(right, #0099CC, #0099CC);
-  background: -moz-linear-gradient(right, #0099CC, #0099CC);
-  background: -o-linear-gradient(right, #0099CC, #0099CC);
-  background: linear-gradient(to left, #0099CC, #0099CC);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
-}
-
-body 
-{
-  background-color: #fff;
-  color: #777;
-  font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
-p {
-  line-height: 20px;
-  margin-bottom: 20px;
-}
-h1 {
-  font-family: 'Crete Round', serif;
-  font-weight: bold;
-  color: #444;
-  font-size: 45px;
-  margin-bottom: 20px;
-}
-header {
-  height: 120px;
-}
-header h1 {
-  float: left;
-  margin-top: 32px;
-}
-header h1 .color {
-  color: #0099CC;
-}
-header nav {
-  float: right;
-}
-header nav ul li {
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-}
-header nav ul li a {
-  color: #444;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin-right: 20px;
-}
-
-*/
