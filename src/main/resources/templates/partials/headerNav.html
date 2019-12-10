@@ -10,7 +10,9 @@
                 <li><a href="/budget">Budget</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <th:block th:if="${user != null}">
-                    <li class="logged-in-user" th:utext="'Welcome,<BR>' + ${user.getFirstName()}"></li>
+
+                    <li><a href="/logout">Logout</a></li>
+                    <li class="logged-in-user" th:utext="'Welcome, ' + ${user.getFirstName()}"></li>
                 </th:block>
                 <th:block th:unless="${user != null}">
                     <li><a href="/login">Login</a></li>
