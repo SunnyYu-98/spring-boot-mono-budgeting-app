@@ -20,6 +20,13 @@ public class UserController {
 
     @GetMapping("/register")
     public String showAccountCreationForm(HttpServletRequest request, Model model) {
+        //user is already logged in
+        User loggedInUser = userService.getCurrentLoggedInUser();
+        if(loggedInUser != null) {
+            model.addAttribute("user", loggedInUser);
+            return "budget";
+        }
+
         model.addAttribute("accountSubmitForm", new AccountCreationForm());
 
         return "register";
@@ -28,17 +35,15 @@ public class UserController {
     @PostMapping("/register")
     public String createAccount(HttpServletRequest request, Model model, @ModelAttribute("accountSubmitForm") AccountCreationForm form) {
         User user = userService.createUserFromCreationForm(form);
-
         if(user == null) {
-            model.addAttribute("accountCreated", false);
+            model.addAttribute("creationError", true);
 
             return "register";
+        } else {
+            model.addAttribute("accountCreated", true);
+
+            return "login";
         }
-
-        //set security context to user and show who's logged in
-
-
-        return "budget";
     }
 
     @RequestMapping(value = "/verify-email", params = "email", method = RequestMethod.GET)

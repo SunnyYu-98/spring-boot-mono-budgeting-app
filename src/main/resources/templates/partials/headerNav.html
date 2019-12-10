@@ -1,0 +1,21 @@
+<link type="text/css" rel="stylesheet" href="/css/headerNav.css">
+<header>
+    <div class="wrapper">
+        <h1>Cash-U
+            <span class="color">.</span>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/budget">Budget</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <th:block th:if="${user != null}">
+                    <li class="logged-in-user" th:utext="'Welcome,<BR>' + ${user.getFirstName()}"></li>
+                </th:block>
+                <th:block th:unless="${user != null}">
+                    <li><a href="/login">Login</a></li>
+                </th:block>
+            </ul>
+        </nav>
+    </div>
+</header>
