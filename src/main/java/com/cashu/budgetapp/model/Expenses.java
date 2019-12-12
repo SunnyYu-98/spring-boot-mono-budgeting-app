@@ -9,7 +9,7 @@ import java.sql.Date;
 public class Expenses implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "expense_id")
     private int expenseId;
 
@@ -30,9 +30,11 @@ public class Expenses implements Serializable {
     @JoinColumn(name = "expense_cat_id")
     private ExpenseCategory category;
 
+    /* Removing this so that the ID will be automatically generated
     public void setExpenseId(int expenseId) {
         this.expenseId = expenseId;
     }
+     */
 
     public void setAmount(double amount) {
         this.amount = amount;

@@ -18,51 +18,58 @@
                 <div class="budget__title">
                     Available Budget in <span class="budget__title--month">%Month%</span>:
                 </div>
-                <div class="budget__value">+ 2,345.64</div>
+                <div class="available-budget" th:text="${availableBudget}">+ 2,345.64</div>
                 <div class="budget__income clearfix">
                     <div class="budget__income--text">Income</div>
                     <div class="right">
-                        <div class="budget__income--value">+ 4,300.00</div>
-                        <div class="budget__income--percentage">&nbsp;</div>
+                        <div th:text="${totalIncome}">+ 4,300.00</div>
+                        <!--<div class="budget__income--percentage">&nbsp;</div>-->
                     </div>
                 </div>
                 <div class="budget__expenses clearfix">
                     <div class="budget__expenses--text">Expenses</div>
-                    <div class="right clearfix">
-                        <div class="budget__expenses--value">- 1,954.36</div>
-                        <div class="budget__expenses--percentage">45%</div>
+                    <div class="right">
+                        <div th:text="${totalExpense}">- 1,954.36</div>
+                        <!--<div class="budget__expenses--percentage">45%</div>-->
                     </div>
                 </div>
             </div>
         </div>
         <div class="bottom">
             <div class="add">
-                <div class="add__container">
-                    <select class="add__type">
+                <form class="add__container" action="/add-expense" method="post">
+                    <select class="add__type" name="expenseSign">
                         <option value="inc" selected>+</option>
                         <option value="exp">-</option>
                     </select>
-                    <input type="text" class="add__description" placeholder="Add description">
-                    <input type="number" class="add__value" placeholder="Value">
+                    <input type="text" class="add__description" placeholder="Add description" name="expenseName">
+                    <input type="number" class="add__value" placeholder="Value" name="expenseAmount">
                     <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
-                </div>
+                </form>
             </div>
             <div class="container clearfix">
                 <div class="transactions">
                     <h2 class="transactions-title">All Transactions</h2>
                     <table class="transactions-table">
-                        <tr>
-                            <th>Expense Category</th>
-                            <th>Description</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                        </tr>
-                        <tr>
-                            <td>Jill</td>
-                            <td>Smith</td>
-                            <td>50</td>
-                            <td>100</td>
-                        </tr>
+                        <th:block th:if="${expenses != null}">
+                            <tr>
+                                <th>Expense Category</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                            <th:block th:each="exp : ${expenses}">
+                                <tr>
+                                    <td th:text="${exp.getCategory().getCategoryName()}">...</td>
+                                    <td th:text="${exp.getExpenseName()}">...</td>
+                                    <td th:text="${exp.getAmount()}">...</td>
+                                    <td th:text="${exp.getExpDate()}">...</td>
+                                </tr>
+                            </th:block>
+                        </th:block>
+                        <th:block th:if="${expenses == null}">
+                            <span>No Transactions</span>
+                        </th:block>
 
                     </table>
 

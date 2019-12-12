@@ -67,7 +67,7 @@ body {
     font-weight: 300;
 }
 
-.budget__value {
+.available-budget {
     font-weight: 300;
     font-size: 46px;
     text-align: center;
@@ -304,11 +304,12 @@ h2
 
 .transactions {
     text-align: center;
+    margin: 0 0 400px 0;
 }
 
 .transactions-table table {
     width: 100%;
-    margin: 0;
+
     padding: 0;
 }
 
