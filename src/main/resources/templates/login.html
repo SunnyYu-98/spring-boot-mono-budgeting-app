@@ -36,6 +36,12 @@
                 Account created successfully!<BR>Please sign in below:
             </div>
         </th:block>
+        <th:block th:if="${passwordResetSuccess}">
+            <div class="password-reset-success">
+                Password reset successfully!<BR>Please sign in below:
+            </div>
+        </th:block>
+
         <form class="login-form" th:action="@{/login}" method="post">
             <input type="text" placeholder="Username" name="username"/>
             <input type="password" placeholder="Password" name="password"/>
@@ -46,7 +52,7 @@
             </p>
 
             <p class="message">Forgot Password?
-                <a href="/password-reset">
+                <a href="/password-reset-email">
                 Reset Password</a>
             </p>
         </form>

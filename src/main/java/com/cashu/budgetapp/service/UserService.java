@@ -61,6 +61,14 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    @Transactional
+    public void resetUserPassword(String email, String password){
+        User user = getUserByEmail(email);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+
+        saveUser(user);
+    }
+
     public User getCurrentLoggedInUser() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Authentication authentication = securityContext.getAuthentication();

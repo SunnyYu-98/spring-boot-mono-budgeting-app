@@ -2,6 +2,7 @@ package com.cashu.budgetapp.controller;
 
 import com.cashu.budgetapp.model.AccountCreationForm;
 import com.cashu.budgetapp.model.User;
+import com.cashu.budgetapp.service.EmailService;
 import com.cashu.budgetapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Resource(name = "userService")
     UserService userService;
+
+    @Resource(name = "emailService")
+    EmailService emailService;
 
     @GetMapping("/register")
     public String showAccountCreationForm(HttpServletRequest request, Model model) {
@@ -55,8 +59,43 @@ public class UserController {
         return response;
     }
 
-    @GetMapping("/password-reset")
+    @GetMapping("/password-reset-email")
     public String getPasswordReset(HttpServletRequest request, Model model) {
-        return "passwordReset";
+        return "passwordResetEmail";
+    }
+
+    @PostMapping("/password-reset-email")
+    public String sendPasswordResetEmail(HttpServletRequest request, Model model) {
+
+        String recipient = request.getParameter("email");
+        String emailSubject = "Reset your password at Cash-U";
+        String emailBody = "Hello, <br><br>Please click on the following link to reset your password: <br><br><a href=\"http://localhost:8080/reset-password?email=" + recipient + "&token=37b7c1eb-2625-4180-9091-a8d354ec679f\">Reset Password</a>";
+        emailService.sendEmail(recipient, emailSubject, emailBody);
+
+        model.addAttribute("emailSent", true);
+
+        return "passwordResetEmail";
+    }
+
+    @GetMapping("/reset-password")
+    public String getPasswordResetPage(HttpServletRequest request, Model model,
+                                       @RequestParam(value = "email") String email,
+                                       @RequestParam(value = "token", required = false) String token) {
+        String correctToken = "37b7c1eb-2625-4180-9091-a8d354ec679f";
+        if(token == null || token.isEmpty() || !token.equals(correctToken)){
+            return "accessDenied";
+        } else {
+            model.addAttribute("email", email);
+            //have a reset-password-land and redirect to this, so that the email and token wouldn't be in the URL
+            return "resetPassword";
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(HttpServletRequest request, Model model){
+        userService.resetUserPassword(request.getParameter("email"), request.getParameter("password"));
+
+        model.addAttribute("passwordResetSuccess",true);
+        return "login";
     }
 }

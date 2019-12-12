@@ -16,7 +16,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void sendEmail() {
+    public void sendEmail(String recipient, String emailSubject, String emailBody) {
 
         final String username = "cashubudgeting@gmail.com";
         final String password = "cashuDBU2019";
@@ -36,19 +36,18 @@ public class EmailService {
 
         try {
 
-            Message message = new MimeMessage(session);
+            MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("cashubudgeting@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("sunny1998830@hotmail.com, austincsoles21@gmail.com")
+                    InternetAddress.parse(recipient)
             );
-            message.setSubject("Testing Gmail TLS");
-            message.setText("Hello appreciated Customer,"
-                    + "\n\n Click this link to change your password.");
+            message.setSubject(emailSubject);
+            message.setText(emailBody, "utf-8", "html");
 
             Transport.send(message);
 
-            System.out.println("Done");
+            System.out.println("Email sent to " + recipient);
 
         } catch (MessagingException e) {
             e.printStackTrace();
