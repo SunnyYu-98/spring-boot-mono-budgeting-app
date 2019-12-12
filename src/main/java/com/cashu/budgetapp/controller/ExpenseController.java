@@ -39,7 +39,7 @@ public class ExpenseController {
         String expenseName = request.getParameter("expenseName");
         double expenseAmount = Double.parseDouble(request.getParameter("expenseAmount"));
 
-        if(expenseSign.equals("-"))
+        if(expenseSign.equals("exp"))
             expenseAmount *= -1;
 
         User currentUser = userService.getCurrentLoggedInUser();
