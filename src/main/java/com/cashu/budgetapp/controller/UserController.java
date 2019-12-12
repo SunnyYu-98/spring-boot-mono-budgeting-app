@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,12 +25,12 @@ public class UserController {
     EmailService emailService;
 
     @GetMapping("/register")
-    public String showAccountCreationForm(HttpServletRequest request, Model model) {
+    public String showAccountCreationForm(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         //user is already logged in
         User loggedInUser = userService.getCurrentLoggedInUser();
         if(loggedInUser != null) {
             model.addAttribute("user", loggedInUser);
-            return "budget";
+            response.sendRedirect("/budget");
         }
 
         model.addAttribute("accountSubmitForm", new AccountCreationForm());
