@@ -55,14 +55,8 @@ public class UserController {
         return response;
     }
 
-    @GetMapping("/hello")
-    public String hello(HttpServletRequest request, Model model){
-        return "hello";
+    @GetMapping("/password-reset")
+    public String getPasswordReset(HttpServletRequest request, Model model) {
+        return "passwordReset";
     }
-
-    @GetMapping("/testHomePage")
-    public String testHomePage(HttpServletRequest request, Model model){
-        return "testhome";
-    }
-
 }

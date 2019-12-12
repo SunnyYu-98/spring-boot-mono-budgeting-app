@@ -66,19 +66,35 @@ small {
     padding: 0 10px;
     width: 940px;
 }
-
-.article1 {
-    background-image: url('/img/article-image-1.jpg');
+header {
+    height: 120px;
 }
-
-.article2 {
-    background-image: url('/img/article-image-2.jpg');
+header h1 {
+    float: left;
+    margin-top: 32px;
 }
-
+header h1 .color {
+    color: #0099CC;
+}
+header nav {
+    float: right;
+}
+header nav ul li {
+    text-align:  left;
+    display: inline-block;
+    margin-top: 50px;
+}
+header nav ul li a {
+    color: #444;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    margin-right: 20px;
+}
 #hero-image {
     height: 580px;
     padding-top: 1px;
-    background: #e8eced url('/img/paper.jpg') no-repeat center;
+    background: #e8eced url('/img/stockpaper2.jpg') no-repeat center;
 }
 #hero-image h2 {
     margin: 180px 0 40px 0;
