@@ -53,8 +53,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+                .csrf()
+                .disable()
                 .authorizeRequests()
-                .antMatchers("/verify-email", "/login", "/", "/home", "/register", "/contact", "/privacy", "/terms").permitAll()
+                .antMatchers("/verify-email", "/login", "/", "/home", "/register", "/contact", "/privacy", "/terms", "/password-reset-email", "/reset-password", "/reset-password-land").permitAll()
                 .antMatchers("/js/**", "/css/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -65,6 +67,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureHandler(customAuthenticationFailureHandler)
                 .and()
                 .logout()
-                .permitAll();
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/home");
     }
 }

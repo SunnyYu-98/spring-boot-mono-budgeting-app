@@ -28,9 +28,20 @@
             You have been logged out.
         </div>
         <th:block th:if="${param.error != null}">
-            <div th:text="${error}">
+            <div class="error" th:text="${error}">
             </div>
         </th:block>
+        <th:block th:if="${accountCreated}">
+            <div class="account-created">
+                Account created successfully!<BR>Please sign in below:
+            </div>
+        </th:block>
+        <th:block th:if="${passwordResetSuccess}">
+            <div class="password-reset-success">
+                Password reset successfully!<BR>Please sign in below:
+            </div>
+        </th:block>
+
         <form class="login-form" th:action="@{/login}" method="post">
             <input type="text" placeholder="Username" name="username"/>
             <input type="password" placeholder="Password" name="password"/>
@@ -38,6 +49,11 @@
             <p class="message">Not registered?
                 <a href="/register">
                 Create an account</a>
+            </p>
+
+            <p class="message">Forgot Password?
+                <a href="/password-reset-email">
+                Reset Password</a>
             </p>
         </form>
     </div>

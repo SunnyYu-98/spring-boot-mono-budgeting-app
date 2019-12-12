@@ -11,8 +11,8 @@ import java.util.List;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @GeneratedValue
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     //java.sql.Date instead of java.util.Date
@@ -125,9 +125,9 @@ public class User implements Serializable {
         return userRole;
     }
 
-    public void setUserId(Long userId) {
+    /*public void setUserId(Long userId) {
         this.userId = userId;
-    }
+    }*/
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;

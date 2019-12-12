@@ -1,12 +1,6 @@
 /**********************************************
 *** GENERAL
 **********************************************/
-body 
-{
-  background-color: #fff;
-  color: #777;
-  font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
 p {
   line-height: 20px;
   margin-bottom: 20px;
@@ -18,31 +12,7 @@ h1 {
   font-size: 45px;
   margin-bottom: 20px;
 }
-header {
-  height: 120px;
-}
-header h1 {
-  float: left;
-  margin-top: 32px;
-}
-header h1 .color {
-  color: #0099CC;
-}
-header nav {
-  float: right;
-}
-header nav ul li {
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-}
-header nav ul li a {
-  color: #444;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin-right: 20px;
-} 
+
 /*End of Style Format*/
 * {
     margin: 0;
@@ -97,7 +67,7 @@ body {
     font-weight: 300;
 }
 
-.budget__value {
+.available-budget {
     font-weight: 300;
     font-size: 46px;
     text-align: center;
@@ -246,7 +216,7 @@ body {
     width: 475px;
 }
 
-h2 
+h2
 {
     text-transform: uppercase;
     font-size: 18px;
@@ -254,7 +224,7 @@ h2
     margin-bottom: 15px;
 }
 
-.icome__title { color: #00cc00; }
+.income__title { color: #00cc00; }
 .expenses__title { color: #FF5049; }
 
 .item {
@@ -330,4 +300,27 @@ h2
 
 .unpaid .item__percentage { box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); }
 .unpaid:hover .item__description { font-weight: 900; }
+
+
+.transactions {
+    text-align: center;
+    margin: 0 0 400px 0;
+}
+
+.transactions-table table {
+    width: 100%;
+
+    padding: 0;
+}
+
+.transactions-table th {
+    height: 50px;
+    text-align: center;
+    padding: 10px 70px;
+}
+
+.transactions-table td {
+    height: 50px;
+    padding: 15px;
+}
 

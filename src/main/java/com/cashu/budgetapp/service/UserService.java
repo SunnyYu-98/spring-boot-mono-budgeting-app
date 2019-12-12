@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -47,16 +47,26 @@ public class UserService implements UserDetailsService {
         user.setLocked(false);
         user.setNumberOfFailedLogins(0);
 
-        //will need to encode the password
-
-        user.setCreatedDate(new Date());
-
         //field value validations are done in the front end
         user.setFirstName(form.getFirstName());
-
+        user.setLastName(form.getLastName());
+        user.setEmail(form.getEmail());
+        user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
+        user.setBirthDate(Date.valueOf(form.getBirthDate()));
+        user.setPhoneNumber(form.getPhoneNumber());
+        user.setBudgetType(null);
+        user.setCreatedDate(new java.util.Date());
         saveUser(user);
 
         return user;
+    }
+
+    @Transactional
+    public void resetUserPassword(String email, String password){
+        User user = getUserByEmail(email);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+
+        saveUser(user);
     }
 
     public User getCurrentLoggedInUser() {

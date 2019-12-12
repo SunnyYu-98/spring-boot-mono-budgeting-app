@@ -1,33 +1,57 @@
 package com.cashu.budgetapp.service;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
-//import sun.nio.ch.DatagramChannelImpl;
+import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.io.IOException;
 
+@Service("emailService")
 public class EmailService {
-    void sendEmail() {
+    @Autowired
+    private JavaMailSender javaMailSender;
 
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("1@gmail.com", "2@yahoo.com");
+    public void sendEmail(String recipient, String emailSubject, String emailBody) {
 
-        msg.setSubject("Testing from Spring Boot");
-        msg.setText("Hello World \n Spring Boot Email");
+        final String username = "cashubudgeting@gmail.com";
+        final String password = "cashuDBU2019";
 
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
 
-        JavaMailSender javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.send(msg);
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
 
+        try {
+
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("cashubudgeting@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(recipient)
+            );
+            message.setSubject(emailSubject);
+            message.setText(emailBody, "utf-8", "html");
+
+            Transport.send(message);
+
+            System.out.println("Email sent to " + recipient);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
 }

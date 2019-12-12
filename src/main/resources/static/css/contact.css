@@ -4,7 +4,12 @@ body
   background-color: #fff;
   color: #777;
   font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
 }
+
 p {
   line-height: 20px;
   margin-bottom: 20px;
@@ -16,31 +21,6 @@ h1 {
   font-size: 45px;
   margin-bottom: 20px;
 }
-header {
-  height: 120px;
-}
-header h1 {
-  float: left;
-  margin-top: 32px;
-}
-header h1 .color {
-  color: #0099CC;
-}
-header nav {
-  float: right;
-}
-header nav ul li {
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-}
-header nav ul li a {
-  color: #444;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin-right: 20px;
-} 
 /*End of Style Format*/
 * {
   margin: 0;
@@ -53,15 +33,6 @@ header nav ul li a {
   -o-font-smoothing: antialiased;
   -font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
-  color: #777;
-  background: #FFF;
 }
 
 .container {
@@ -83,7 +54,7 @@ body {
 #contact {
   background: #F9F9F9;
   padding: 25px;
-  margin: 150px 0;
+  margin: 20px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
