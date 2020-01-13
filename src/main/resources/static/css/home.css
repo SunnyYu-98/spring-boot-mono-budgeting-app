@@ -1,12 +1,14 @@
 body {
     background-color: #fff;
-    color: #777;
+    color: #0099CC;
     font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
+
 p {
     line-height: 20px;
     margin-bottom: 20px;
 }
+
 h1 {
     font-family: 'Crete Round', serif;
     font-weight: bold;
@@ -14,6 +16,7 @@ h1 {
     font-size: 45px;
     margin-bottom: 20px;
 }
+
 h2 {
     font-weight: 300;
     color: #444;
@@ -22,6 +25,7 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 h3 {
     font-size: 30px;
     color: #444;
@@ -30,6 +34,7 @@ h3 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 h4 {
     font-size: 24px;
     color: #444;
@@ -37,12 +42,14 @@ h4 {
     text-transform: uppercase;
     margin-bottom: 20px;
 }
+
 h5 {
     font-size: 15px;
     color: #444;
     font-weight: bold;
     text-transform: uppercase;
 }
+
 a {
     text-decoration: none;
     color: #444;
@@ -50,14 +57,17 @@ a {
 a:hover {
     color: #0099CC;
 }
+
 strong {
     font-weight: bold;
 }
+
 small {
     font-size: 13px;
     color: #777;
     font-style: italic;
 }
+
 .clear {
     clear: both;
 }
@@ -66,31 +76,7 @@ small {
     padding: 0 10px;
     width: 940px;
 }
-header {
-    height: 120px;
-}
-header h1 {
-    float: left;
-    margin-top: 32px;
-}
-header h1 .color {
-    color: #0099CC;
-}
-header nav {
-    float: right;
-}
-header nav ul li {
-    text-align:  left;
-    display: inline-block;
-    margin-top: 50px;
-}
-header nav ul li a {
-    color: #444;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: block;
-    margin-right: 20px;
-}
+
 #hero-image {
     height: 580px;
     padding-top: 1px;
