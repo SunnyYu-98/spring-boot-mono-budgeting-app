@@ -65,7 +65,8 @@ public class UserService implements UserDetailsService {
     public void resetUserPassword(String email, String password){
         User user = getUserByEmail(email);
         user.setPassword(bCryptPasswordEncoder.encode(password));
-
+        user.setNumberOfFailedLogins(0);
+        user.setLocked(false);
         saveUser(user);
     }
 
